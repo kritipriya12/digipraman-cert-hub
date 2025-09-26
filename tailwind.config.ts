@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -38,6 +39,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -46,6 +48,14 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        official: {
+          blue: "hsl(var(--official-blue))",
+          "blue-dark": "hsl(var(--official-blue-dark))",
+        },
+        verification: {
+          green: "hsl(var(--verification-green))",
+          "green-light": "hsl(var(--verification-green-light))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -80,10 +90,37 @@ export default {
             height: "0",
           },
         },
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        slideUp: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        glow: {
+          from: { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
+          to: { boxShadow: "0 0 30px hsl(var(--primary) / 0.5)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        "slide-up": "slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "glow": "glow 2s ease-in-out infinite alternate",
+      },
+      backgroundImage: {
+        "trust-gradient": "var(--trust-gradient)",
+        "success-gradient": "var(--success-gradient)",
+      },
+      boxShadow: {
+        "card": "var(--card-shadow)",
+        "step": "var(--step-shadow)",
+      },
+      transitionTimingFunction: {
+        "smooth": "var(--transition-smooth)",
+        "spring": "var(--transition-spring)",
       },
     },
   },
