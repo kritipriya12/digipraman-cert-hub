@@ -38,7 +38,7 @@ interface FormData {
   verificationMode: 'online' | 'offline';
 }
 
-export function CertificateUploadForm() {
+export function CertificateUploadForm({ allowBulk = true }: { allowBulk?: boolean }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     certificateType: '',
@@ -94,7 +94,13 @@ export function CertificateUploadForm() {
       case 3:
         return <MetadataStep value={formData.metadata} onChange={(metadata) => updateFormData({ metadata })} />;
       case 4:
-        return <BulkUploadStep value={formData.bulkUpload} onChange={(bulkUpload) => updateFormData({ bulkUpload })} />;
+        return allowBulk ? (
+          <BulkUploadStep value={formData.bulkUpload} onChange={(bulkUpload) => updateFormData({ bulkUpload })} />
+        ) : (
+          <div className="p-4 rounded-md border bg-muted/30 text-sm text-muted-foreground">
+            Bulk upload is not available for your role. Continue to verification.
+          </div>
+        );
       case 5:
         return <VerificationStep value={formData.verificationMode} onChange={(verificationMode) => updateFormData({ verificationMode })} />;
       case 6:
